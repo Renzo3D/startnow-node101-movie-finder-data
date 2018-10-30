@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
             res.json(cache[movieText]);
         }
         else {
-            axios.get('http://www.omdbapi.com/?t=' + movieText + '&apikey=8730e0e')
+            axios.get('http://www.omdbapi.com/?t=' + movieText + '&apikey='+MY_API_KEY)
             .then(function (response) {
                 cache[movieText] = response.data;
                 res.json(response.data);
