@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
             res.json(cache[movieId])
         }
         else {
-            axios.get('http://www.omdbapi.com/?i=' + movieId + '&apikey=8730e0e')
+            axios.get('http://www.omdbapi.com/?i=' + movieId + '&apikey='+MY_API_KEY)
                 .then(function (response) {
                     cache[movieId] = response.data;
                     res.json(response.data);
@@ -28,11 +28,9 @@ app.get('/', function (req, res) {
 
         }
 
-           
-
     }
     else {
-        movieText = movieText.replace(' ', '%20');
+        //movieText = movieText.replace(/\s/g,"-", '%20');
         if(cache[movieText]) {
             res.json(cache[movieText]);
         }
